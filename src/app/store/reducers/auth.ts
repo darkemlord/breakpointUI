@@ -24,7 +24,7 @@ export const authSlice = createSlice({
           fetch: REDUX_STATE.pending,
         };
       })
-      .addCase(signup.fulfilled, (state, action) => {
+      .addCase(signup.fulfilled, (state, _action) => {
         return {
           ...state,
           fetch: REDUX_STATE.fulfilled,
