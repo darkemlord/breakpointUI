@@ -1,9 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
+import { useAppDispatch } from "./app/hooks";
+import { signup } from "./app/store/actions/auth";
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  const register = () => {
+    dispatch(signup({ email: "danielota@email.com", password: "sabrosona" }));
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -50,6 +57,7 @@ function App() {
             React Redux
           </a>
         </span>
+        <button onClick={register}>Papi</button>
       </header>
     </div>
   );
