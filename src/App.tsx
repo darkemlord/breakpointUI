@@ -6,7 +6,13 @@ function App() {
   const dispatch = useAppDispatch();
 
   const register = () => {
-    dispatch(signup({ email: "danielota@email.com", password: "sabrosona" }));
+    dispatch(
+      signup({
+        email: "camilon@email.com",
+        password: "camilon561",
+        username: "camilonvergon",
+      })
+    );
   };
   return (
     <div className="App">
