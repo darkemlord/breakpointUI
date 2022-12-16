@@ -4,6 +4,7 @@ const theme = createTheme({
   typography: {
     allVariants: {
       color: "#FAFAFA",
+      fontFamily: "regular",
     },
   },
   palette: {

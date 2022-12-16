@@ -1,7 +1,14 @@
 import React from "react";
-import { Box, makeStyles, createStyles, Theme } from "@material-ui/core";
+import {
+  Box,
+  makeStyles,
+  createStyles,
+  Theme,
+  Typography,
+} from "@material-ui/core";
 import homeBackground from "../../assets/images/home-background.jpg";
 import homeImage from "../../assets/images/home-image.jpg";
+import AuthForm from "./AuthForm/AuthForm";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -12,15 +19,13 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       overflow: "hidden",
     },
-    sectionOne: {
+    sections: {
       display: "flex",
       width: "50%",
       position: "relative",
       justifyContent: "center",
       alignItems: "center",
-    },
-    sectionTwo: {
-      width: "50%",
+      flexDirection: "column",
     },
     containerImage: {
       width: "100%",
@@ -36,6 +41,12 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: 10,
       opacity: "90%",
     },
+    bannerTitle: {
+      fontSize: 40,
+    },
+    bannerText: {
+      fontSize: 30,
+    },
   })
 );
 
@@ -43,7 +54,7 @@ const DesktopAppAuth: React.FC = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Box className={classes.sectionOne}>
+      <Box className={classes.sections}>
         <img
           src={homeBackground}
           alt="none"
@@ -51,7 +62,13 @@ const DesktopAppAuth: React.FC = () => {
         />
         <img src={homeImage} alt="none" className={classes.image} />
       </Box>
-      <Box className={classes.sectionTwo}>Section 2</Box>
+      <Box className={classes.sections}>
+        <Typography className={classes.bannerTitle}>Hello Again!</Typography>
+        <Typography className={classes.bannerText}>
+          Welcome back you’ve been missed!
+        </Typography>
+        <AuthForm />
+      </Box>
     </Box>
   );
 };
