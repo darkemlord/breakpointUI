@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Button, Box } from "@material-ui/core";
 import { useForm, Controller } from "react-hook-form";
+import { makeStyles } from "@material-ui/core/styles";
 import { useAppDispatch } from "../../../hooks";
 import { signup } from "../../../store/actions/auth";
 
@@ -10,10 +11,20 @@ interface FormValues {
   password: string;
 }
 
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "white",
+    borderRadius: 5,
+  },
+  inputProps: {
+    color: "#000000",
+  },
+});
+
 const AuthForm: React.FC = () => {
   const { handleSubmit, control } = useForm<FormValues>({});
   const dispatch = useAppDispatch();
-
+  const classes = useStyles();
   const onSubmit = (data: FormValues) => {
     dispatch(signup(data));
   };
@@ -30,10 +41,18 @@ const AuthForm: React.FC = () => {
           render={({ field: { onChange }, fieldState: { error } }) => (
             <TextField
               name="username"
-              label="Username"
               type="username"
+              className={classes.root}
+              label="username"
+              variant="outlined"
               helperText={error?.message}
               onChange={onChange}
+              inputProps={{
+                className: classes.inputProps,
+                classes: {
+                  focused: { borderRadius: "1px solid red" },
+                },
+              }}
             />
           )}
           rules={{
@@ -54,6 +73,7 @@ const AuthForm: React.FC = () => {
               name="email"
               label="Email"
               type="email"
+              variant="outlined"
               helperText={error?.message}
               onChange={onChange}
             />
@@ -94,13 +114,6 @@ const AuthForm: React.FC = () => {
           }}
         />
       </Box>
-      {/* <TextField
-        name="password"
-        label="Password"
-        type="password"
-        error={!!errors.password}
-        helperText={errors.password ? errors.password.message : ""}
-      /> */}
       <Button type="submit">Submit</Button>
     </form>
   );
